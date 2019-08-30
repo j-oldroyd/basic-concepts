@@ -1,0 +1,172 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm,amssymb}
+
+\newtheorem{theorem}{Theorem} % Allows creation of theorems
+\newtheorem{prop}[theorem]{Proposition} % Creates proposition environment
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\euler}{e^{i\pi} + 1 = 0}
+
+\title{Introduction to \LaTeX}
+\author{Russell Wilson}
+\date{August 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\subsection{\LaTeX}
+
+\LaTeX{} is a typesetting system designed to produce mathematical documents.
+It is built on top of the \TeX{} programming langauge, and offers users a high degree of control over the style of their documents.
+Whereas Microsoft Word is designed to have a \textit{what you see is what you get} (WYSIWYG) approach, \LaTeX{} opts for a \textit{what you see is what you mean} (WYSIWYM) guideline instead.
+Despite the control you're given over the document, \LaTeX{} aims to encourage users to focus on their content instead of their style.\footnote{This usually fails miserably.}
+
+\subsection{Overleaf}
+
+Overleaf is a service for hosting \LaTeX{} documents online, and doesn't require you to download your own personal \TeX{} distribution.
+If you have a valid source, you can compile the document quickly to a PDF by clicking the Compile/Recompile button, pressing CTRL+enter or pressing CTRL+s.
+Overleaf also offers tools for collaborating on documents.
+For example, highlighting text (in ``Source'' mode) allows you to add a comment.
+People you've shared your project with can see and respond to these comments.
+It's also easy to jump from source code to the PDF output and back:
+\begin{enumerate}
+    \item To go from code to PDF, place your cursor on the relevant line of code and click the $\rightarrow$ next to the PDF window.
+    \item To go from PDF to code, double-click the relevant location in the PDF.
+\end{enumerate}
+Overleaf also provides many of the most popular \LaTeX{} packages for writing and presenting mathematics, and offers a ``Rich Text'' mode that makes your source code a little more readable.
+
+\section{Writing with \LaTeX}
+
+When creating documents with \LaTeX{}, you're not actually using a specific program called ``\LaTeX{}''.
+Rather, you're creating a text file (with the extension \texttt{.tex}) and then processing with with a \TeX{} distribution.
+\TeX{} converts the markup you've provided into readable output such as a PDF file.
+This is more complicated then just creating documents with Word, but offers important benefits as well.
+In particular, just about anyone can open your \texttt{.tex} source file since it's just a text file, and likewise almost anyone can open your output (which is usually a PDF file).
+
+\subsection{Structure}
+
+A \LaTeX{} file is a combination of written text and various commands.
+In \LaTeX, commands begin with a backslash: \textbackslash.
+This also means that the backslash is special character: whenever \LaTeX{} sees it, it expects a command to follow (unless you use \texttt{\textbackslash textbackslash}).
+There are nine other special characters in \LaTeX:
+\begin{enumerate}
+    \item \&, which is often used to specify alignment.
+    \item \%, which is used to comment out code in the source.
+    \item \$, which is used to begin and end \textit{math mode}.
+    \item \#, which is used in macros.
+    \item \_, which is used for subscripts.
+    \item \^{}, which is used for superscripts.
+    \item \{ and \}, which are used to enclose arguments for commands.
+    \item \~{}, which affects spacing.
+\end{enumerate}
+If you wish to type any of these in text, you can just place a backslash beforehand.
+For example, \texttt{\textbackslash \%} in the source produces a \% in the output, without actually commenting out any code.
+The exception, as mentioned above, is the backslash.
+Instead, \textbackslash\textbackslash{} forces a line break in the output.
+
+Every \LaTeX{} document must also follow a certain basic structure.
+First, every document begins with \texttt{\textbackslash documentclass}.
+Here is where you specify the type of document you're creating (such as a book, Beamer presentation, etc.).
+After this, you can include packages using the \texttt{\textbackslash usepackage} command, define your own macros for use in the document or change style settings.
+This part of the document is known as the \textbf{preamble}.
+
+After the preamble, you must place \texttt{\textbackslash begin\{document\}}.
+You'll place the content of your document after this tag.
+The last line of your document should be a matching \texttt{\textbackslash end\{document\}}.
+
+\begin{example}
+    Create a \texttt{.tex} file (name it anything you like) that compiles properly in Overleaf and contains the message ``Hello world!''.
+\end{example}
+
+\LaTeX{} also has a variety of \textbf{environments} to customize display of content.
+Environments are placed between \texttt{\textbackslash begin\{\}} and \texttt{\textbackslash end\{\}} tags.
+If you look in the preamble of this document, you can see that the \texttt{\textbackslash newtheorem} command is used twice to create environments for theorems and propositions.
+
+\begin{theorem}
+    Theorems are amazing.
+\end{theorem}
+\begin{proof}
+    The proof is immediate.
+\end{proof}
+
+\begin{prop}[The Agreement Proposition]
+    I agree.
+\end{prop}
+
+\begin{example}
+    In your new document, create a new environment for lemmas.
+    Then use your lemma inside of your document.
+    (\textit{Hint}: use the \texttt{\textbackslash newtheorem} command in your preamble, following the usage in this document.
+    You'll also need to add \texttt{\textbackslash usepackage\{amsthm\}}!)
+\end{example}
+
+\subsection{Math Mode}
+
+Mathematics is produced in \LaTeX{} within \textbf{math mode}.
+This mode has two versions:
+\begin{enumerate}
+    \item \textbf{inline math}, which is delimited using \$\ldots\$.
+    This is useful for smaller expressions that you want to place within a sentence.
+    For example, something like $e^{i\pi} + 1 = 0$ is my favorite equation!
+    
+    \item \textbf{display math}, which is delimited using \$\$\ldots\$\$ or \textbackslash[\ldots\textbackslash].
+    This should be used for mathematics that you want to stand out in your document, such as an important calculation.
+    For example, something like
+    \[
+        e^{i\pi} + 1 = 0
+    \]
+    is my favorite equation!
+\end{enumerate}
+Math mode has its own set of commands to help display mathematics.
+Many of these commands will \textbf{not} work outside of it.
+\begin{example}
+    Use math mode (with inline math) to fill in the table below.
+    \begin{center}
+    \begin{tabular}{||c|c||}
+        function & derivative \\
+        \hline\hline
+        $3x^{5}$ & ?\\
+        $e^{x}$ & ?\\
+        $\int_{0}^{x}\sin(t^{2})\,dt$ & ?\\
+    \end{tabular}
+    \end{center}
+\end{example}
+
+\subsection{Macros and New Commands}
+
+Code or symbols that you use often can be defined in \textit{macros} using \texttt{\textbackslash newcommand\{\textbackslash commandname\}\{definition\}}.
+For example, if I find myself typing $e^{i\pi}+1 = 0$ quite a bit, I can create a command as follows:
+\begin{center}
+    % don't type this in exactly! See PDF output or preamble
+    \textbackslash newcommand\{\textbackslash euler\}\{e\^{}\{i\textbackslash pi\} + 1 = 0\} % 
+\end{center}
+Then every time I type ``\textbackslash euler'' (in math mode!), I get
+\[
+    \euler
+\]
+
+\begin{example}
+    Create macros for $\mathbb{N}, \mathbb{Z}, \mathbb{Q}$ and $\mathbb{R}$ in your document and use them successfully.
+    You should make sure that you load the \texttt{amssymb} package in your preamble!
+\end{example}
+
+\subsection{Guidelines}
+
+Here are some good guidelines to follow when writing with \LaTeX.
+\begin{itemize}
+    \item Outside of math mode, place every sentence on its own line.
+    This won't affect the output, but makes it easier to track down errors or make comments/edits.
+    
+    \item Mathematics content should always be placed within math mode.
+    Just compare ``4x + 2y = z'' with ``$4x + 2y = z$''.
+    The mathematics already inside math mode is easier to separate from the rest of the document.
+    
+    \item See Appendix A for more!
+\end{itemize}
+
+
+\end{document}
