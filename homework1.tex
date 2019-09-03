@@ -1,0 +1,185 @@
+\documentclass[addpoints,11pt]{exam}
+
+% These are the packages I need.
+\usepackage{amsfonts,amsmath,amssymb,amsthm,array,enumerate,mathtools,bm}
+
+\usepackage[left=1in,right=1in,bottom=1in,top=.5in]{geometry}
+
+% This is to create nicer tables.
+\usepackage{booktabs,longtable}
+
+% This apparently helps typesetting.
+\usepackage{microtype}
+
+% Provides useful macros, like \qty{}, \qty[], \qty(), etc.
+\usepackage[italicdiff]{physics}
+
+% Provides captions outside of figure environment and subfigures and FLOATS.
+\usepackage{caption,subcaption,float}
+
+\newtheorem{theorem}{Theorem}
+
+\DeclarePairedDelimiter\innprod{\langle}{\rangle}
+\DeclarePairedDelimiter\set{\{}{\}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\parens{\lparen}{\rparen}
+\DeclarePairedDelimiter\brackets{[}{]}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\HH}{\mathcal{H}}
+
+% Here's where you edit the Class, Exam, Date, etc.
+\newcommand{\class}{\textsc{Math 250-01}}
+\newcommand{\term}{\textsc{Fall 2019}}
+\newcommand{\examnum}{\textsc{Homework 1}}
+\newcommand{\duedate}{\textsc{Due 9/11/18}}
+
+% For an exam, single spacing is most appropriate
+%\singlespacing
+% \onehalfspacing
+% \doublespacing
+
+% For an exam, we generally want to turn off paragraph indentation
+\parindent 0ex
+
+% This places point total in the margin.
+\pointsinmargin
+
+% Changes addlinespace value
+\setlength{\defaultaddspace}{.5cm}
+
+% For listing table rows.
+\newcounter{rowcount}
+\setcounter{rowcount}{0}
+
+\begin{document} 
+
+%%%%%%%%%%%%%%%%%
+% \todototoc
+% \listoftodos
+%%%%%%%%%%%%%%%%%
+\pagebreak
+
+% These commands set up the running header on the top of the exam pages
+\pagestyle{headandfoot}
+\header{\class}{\examnum\ - Page \thepage\ of \numpages}{\duedate}
+% \footer{\oddeven{}{\pointbox}}{}{\oddeven{\pointbox}{}}
+\headrule
+\extraheadheight{.5cm}
+
+\begin{coverpages}
+\begin{flushright}
+\begin{tabular}{p{2.8in} r l}
+\class&&\hspace{3in} \\
+\term&&\\
+\examnum&&\\
+\duedate&\textsc{Name}: & \makebox[2.83in]{\hrulefill}\\
+\end{tabular}\\
+\end{flushright}
+\rule[1ex]{\textwidth}{.1pt}
+
+
+This assignment contains \numquestions\ exercises. The following rules apply:
+\begin{itemize}
+\item \textbf{You must write clearly}. 
+Your work must be organized in a reasonably neat and coherent way. 
+Work scattered all over the page without a clear ordering will receive little to no credit.  
+
+\item \textbf{You must show relevant work}.  
+A correct answer, unsupported by calculations, explanation or algebraic work may not receive credit; an incorrect answer supported by substantially correct calculations and explanations might still receive significant partial credit. 
+
+\item \textbf{You must staple this cover sheet to your homework} if you hand in a physical copy. 
+Otherwise, I will not accept it.
+If you choose to submit your homework electronically through Blackboard (\textit{in which case it must be turned in as a PDF}), then you are exempt from this requirement.
+Either way, your assignment must be created using \LaTeX.
+
+\item \textbf{Two problems will be graded meticulously}.
+The remaining four problems will be graded in less detail and will be worth \textbf{four $\boldsymbol{(4)}$} points each, and two more points will be given freely to round out the total at 50 points. 
+All grading will make use of the ``Rubric for Mathematical Writing'' which is available on Blackboard.
+Your goal is to reach the level of ``Distinguished'' in all four categories.
+Do not write in the following table.
+
+\begin{center}
+\textsc{\Large Grading Table}\\
+\vspace{10pt}
+\begin{tabular}{cccccc}
+\toprule
+Problem & Communication & Problem-solving & Computation & Understanding & Total  \\
+\cmidrule(r){1-1}\cmidrule(lr){2-5}\cmidrule(l){6-6}
+ & & & & & \fbox{\phantom{500} / 16}\\
+\addlinespace[20pt]
+ & & & & & \fbox{\phantom{500} / 16}\\
+\addlinespace[20pt]
+Remaining & & & & & \fbox{\phantom{500} / 16}\\
+& & & & & $+2$ \\
+\bottomrule
+\addlinespace[10pt]
+ & & & & & \fbox{\phantom{500} / 50} \\
+\end{tabular}
+\end{center}
+
+\end{itemize}
+\end{coverpages}
+
+\newpage
+
+\begin{questions}
+\printanswers
+\section*{Section 1.1}
+  \question
+  This problem is adapted from Problem 7 on page 1 of the text.
+  Consider the following theorem:
+  \begin{theorem}
+    If $f$ is a quadratic function of the form $f(x) = ax^{2} + bx + c$ and $ac < 0$, then the function $f$ has two $x$-intercepts.
+  \end{theorem}
+  Using \textbf{only} this theorem, what can be concluded about the functions given by the following formulas?
+  \begin{parts}
+    \part $g(x) = -8x^{2} + 5x - 2$.
+
+    \part $h(x) = -\frac{1}{3}x^{2} + 3x$.
+
+    \part $k(x) = 8x^{2} - 5x - 7$.
+  \end{parts}
+  \begin{solution}
+    \begin{parts}
+      \part We can conclude that...
+
+      \part We can conclude that...
+
+      \part We can conclude that...
+    \end{parts}
+  \end{solution}
+
+  \vspace{.5cm}
+
+  \question
+  Complete Problem 9 on page 14 of the text.
+
+\section*{Section 1.2}
+  \question
+  Prove or disprove the following statement:
+  \begin{quote}
+    Let $a,b,c\in\CC$.
+    Then there is only one value of $a$ such that $ax^{2} + bx + c = 0$ has exactly one solution.
+  \end{quote}
+
+  \vspace{.5cm}
+
+  \question
+  Let $m\in\ZZ$ be an integer that is precisely one more than a multiple of $4$.
+  Is $m^{2}$ one more than a multiple of $8$?
+
+  \vspace{.5cm}
+
+  \question
+  Complete Problem 10 on page 28 of the text.
+
+  \vspace{.5cm}
+
+  \question
+  Complete Problem 13 on page 30 of the text.
+\end{questions}
+\end{document}
